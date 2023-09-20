@@ -14,27 +14,9 @@
   import ConversationContent from './lib/ConversationContent.svelte';
   import { onMount } from 'svelte'
   import { navigate } from 'svelte-routing'
-  import { logEvent } from 'firebase/analytics'
-  import analytics from './firebase.js'
-    import PromptView from './lib/PromptView.svelte';
-
-  onMount(() => {
-  // Initially log the first page view
-  logPageView()
-
-  // Log every subsequent route change as a page view
-  navigate.bind(() => {
-    logPageView()
-  })
-})
-
-function logPageView () {
-  logEvent(analytics, 'page_view', {
-    page_path: window.location.pathname
-    // Add any additional parameters if needed
-  })
-}
+  import PromptView from './lib/PromptView.svelte';
 </script>
+
 <svelte:head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -2,9 +2,7 @@
     import { onMount } from "svelte";
     import {
       loadConversationHistory,
-      generateConversationSummary,
-      trackAnalyticsEvent,
-      eventHamburgerMenu,
+      generateConversationSummary
     } from "../chat_script2";
     import Modal from "./components/Modal.svelte";
     import ProfileModal from "./components/ProfileModal.svelte";
@@ -21,10 +19,6 @@
 
     // Load the conversation history when the page loads
     onMount(() => loadConversationHistory());
-
-    const generateEventHamburgerMenu = () => {
-      trackAnalyticsEvent(eventHamburgerMenu);
-    };
 
     const queryParams = new URLSearchParams(location.search);
     queryParams.set('agent', agent);
@@ -60,7 +54,6 @@
         id="options-btn"
         class="material-symbols-outlined"
         on:click={() => (showModal = true)}
-        on:click={generateEventHamburgerMenu}
         on:click={generateConversationSummary}
       >
         more_vert

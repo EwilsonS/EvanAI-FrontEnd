@@ -1,8 +1,26 @@
 {
- "dependencies": {},
+  "name": "client",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "cd client && vite",
+    "build": "cd client && vite build",
+    "preview": "cd client && vite preview",
+    "heroku-postbuild": "cd client && npm run build"
+  },
   "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "eslint": "^8.44.0",
+    "prettier": "^3.0.0",
+    "svelte": "^4.0.3",
+    "vite": "^4.4.3",
     "@typescript-eslint/eslint-plugin": "^6.2.1",
     "standard": "^17.1.0"
+  },
+  "dependencies": {
+    "firebase": "^10.1.0",
+    "svelte-routing": "^2.0.0"
   },
   "engines": {
     "node": ">=18.17.0"

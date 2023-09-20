@@ -3,8 +3,6 @@ import { chosenProfile } from './lib/stores'
 import UserFeedback from './lib/components/UserFeedback.svelte'
 import ChatMessage from './lib/components/ChatMessage.svelte'
 import Icon from './lib/components/Icon.svelte'
-import { logEvent } from 'firebase/analytics'
-import analytics from './firebase.js'
 import { langOpts } from './switch_language'
 
 export let baseUrl = import.meta.env.VITE_FIN_GENIE_BASE_URL
@@ -53,20 +51,6 @@ chosenProfile.subscribe((value) => {
 let messageIndex = 0
 const messageClassIndex = 1
 
-// analytics events
-const eventUserInput = 'user_input'
-const eventAgentSuggestion = 'agent_suggestion'
-const eventClearHistory = 'clear_history'
-const eventCopyMessage = 'copy_message'
-const eventCopyConversation = 'copy_conversation'
-const eventCopySummary = 'copy_summary'
-export const eventHamburgerMenu = 'hamburger_menu'
-const eventScrollUp = 'scroll_up'
-const eventClickLink = 'click_link'
-const eventLogin = 'login'
-const eventFeedback = 'user_feedback'
-const eventClickSuggestion = 'click_suggestion'
-
 let username = localStorage.getItem('username')
 let password = localStorage.getItem('password')
 
@@ -75,7 +59,6 @@ if (!username || !password) {
   password = prompt('Please enter your password:')
 
   if (username && password) {
-    trackAnalyticsEvent(eventLogin, { method: 'prompt' })
     localStorage.setItem('username', username)
     localStorage.setItem('password', password)
   }
@@ -99,7 +82,6 @@ export function loadConversationHistory () {
 }
 
 export function clearHistory () {
-  trackAnalyticsEvent(eventClearHistory)
   suggestionActive = false
   suggestionCount = 0
   nudgeActive = false // do not nudge the user after clearing the history
@@ -306,7 +288,6 @@ export function addMessage (message, sender, animate = false, callback = undefin
 }
 
 export function copyMessage (event) {
-  trackAnalyticsEvent(eventCopyMessage)
   // Retrieve index of the clicked copy button
   const index = event.target.classList[messageClassIndex]
 
@@ -331,7 +312,6 @@ export function copyMessage (event) {
 }
 
 export function setFeedback (event, index, value, oppositeButton, oppositeSymbol) {
-  trackAnalyticsEvent(eventFeedback, { satisfied: value })
   conversationHistory.at(index).satisfied = value
   localStorage.setItem('conversationHistory', JSON.stringify(conversationHistory))
   event.target.innerHTML += '<br> done'
@@ -370,7 +350,6 @@ function loadFeedback () {
 }
 
 export function copyConversation (event) {
-  trackAnalyticsEvent(eventCopyConversation)
   let resultFinal = ''
   conversationHistory.forEach((item) => {
     const result1 = item.role + ''
@@ -454,7 +433,6 @@ export function sendMessage (event) {
 
     // Display the user's messageContent and update the conversation history
     addMessage(messageContent, 'user')
-    trackAnalyticsEvent(eventUserInput)
     conversationHistory.push({ role: 'user', content: messageContent })
     saveConversationHistory() // Save the updated conversation history to localStorage
 
@@ -490,14 +468,7 @@ export function sendMessage (event) {
         return reader.read().then(function processText ({ done, value }) {
           if (done) { // stream complete
             if (accumulatedText.length > 0) {
-              setTimeout(() => clearBlinkers(), 1000) // clear cursors after a brief delay
-              const links = chunkElement.querySelectorAll('a') // add event listeners to links
-              links.forEach(link => {
-                link.addEventListener('click', function (event) {
-                  const targetText = event.target.textContent || event.target.innerText
-                  trackAnalyticsEvent(eventClickLink, { text: targetText })
-                })
-              })
+              setTimeout(() => clearBlinkers(), 1000) // clear cursors after a brief delay              
               conversationHistory.push({ role: 'assistant', content: accumulatedText.join('') })
               saveConversationHistory() // Save the updated conversation history to localStorage
               setTimeouts()
@@ -561,16 +532,8 @@ export function generateInternalConversation () {
       let chunkElement
       return reader.read().then(function processText ({ done, value }) {
         if (done) { // stream complete
-          trackAnalyticsEvent(eventAgentSuggestion)
           setTimeout(() => clearBlinkers(), 1000) // clear cursors after a brief delay
           if (accumulatedText.length > 0) {
-            const links = chunkElement.querySelectorAll('a') // add event listeners to links
-            links.forEach(link => {
-              link.addEventListener('click', function (event) {
-                const targetText = event.target.textContent || event.target.innerText
-                trackAnalyticsEvent(eventClickLink, { text: targetText })
-              })
-            })
             conversationHistory.pop() // remove the last prompt
             conversationHistory.push({ role: 'assistant', content: accumulatedText.join(''), satisfied: undefined })
             saveConversationHistory() // Save the updated conversation history to localStorage
@@ -628,7 +591,6 @@ export function generateConversationSummary () {
       const accumulatedText = []
       return reader.read().then(function processText ({ done, value }) {
         if (done) {
-          trackAnalyticsEvent(eventAgentSuggestion)
           setTimeout(() => clearBlinkers(), 1000)
           if (accumulatedText.length > 0) {
             conversationHistory.pop()
@@ -650,18 +612,10 @@ export function generateConversationSummary () {
 function addSummary (summary) {
   const summaryElement = document.getElementById('popup-summary-text')
   summaryElement.innerHTML += summary.replace(/\n/g, '<br>')
-  const links = summaryElement.querySelectorAll('a') // add event listeners to links
-  links.forEach(link => {
-    link.addEventListener('click', function (event) {
-      const targetText = event.target.textContent || event.target.innerText
-      trackAnalyticsEvent(eventClickLink, { text: targetText })
-    })
-  })
   summaryElement.scrollTop = summaryElement.scrollHeight
 }
 
 export function copySummary (event) {
-  trackAnalyticsEvent(eventCopySummary)
   const summaryElement = document.getElementById('popup-summary-text')
   navigator.clipboard.write([new ClipboardItem({ 'text/html': summaryElement.innerHTML.replaceAll('\n', '<br>') })])
   event.target.innerHTML += ' done'
@@ -716,10 +670,6 @@ function changeInputFocus (event, selector = 'input[name="message"]') {
   inputElement.focus()
 }
 
-export function trackAnalyticsEvent (event, eventParams = {}) {
-  logEvent(analytics, event, eventParams)
-}
-
 let scrollTimeout
 let lastScrollTop = 0
 
@@ -733,9 +683,6 @@ function addScrollEvent () {
     }
     lastScrollTop = currentScrollTop
     scrollTimeout = setTimeout(function () {
-      if (scrollUpDirection) { // only track scroll up events
-        trackAnalyticsEvent(eventScrollUp)
-      }
     }, 500)
   })
 }
@@ -781,7 +728,6 @@ export function buttonizeSuggestions (chunkSpan) {
 }
 
 function clickSuggestion (text, event) {
-  trackAnalyticsEvent(eventClickSuggestion, { text })
   document.getElementById('message').value = text
   sendMessage(event)
 }
