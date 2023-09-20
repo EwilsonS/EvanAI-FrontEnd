@@ -84,7 +84,7 @@
     <link rel="stylesheet" type="text/css" href="../styles.css">
   </svelte:head>
   <div id="header-container">
-    <h4>finGenie</h4>
+    <h4>EvanAI</h4>
     <div>
       <div style="position: absolute; left: 3vw; top: 1vw;">
         <input type="text" id="profile-search" name="profile-search" placeholder={profile} on:input={() => showSearchResults.set(true)} bind:value={inputSearch}/>

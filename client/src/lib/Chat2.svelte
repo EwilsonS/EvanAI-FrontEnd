@@ -47,7 +47,7 @@
   <link rel="stylesheet" type="text/css" href="../styles.css" />
 </svelte:head>
 <div id="header-container">
-  <h4>finGenie</h4>
+  <h4>EvanAI</h4>
   <div style="margin-left:45vw">
     <SelectLanguage />
     <button
