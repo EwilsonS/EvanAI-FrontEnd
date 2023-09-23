@@ -29,9 +29,11 @@
         location.reload()
     }
 </script>
-
-<form on:submit|preventDefault={handleEnter} id="text-field-box">
-    <input type="text" id="message" name="message" placeholder={langOpts.inputPlaceholder[lang]} on:input={clearSuggestions} on:focus={handleFocus} on:blur={handleBlur}>
-    <button type="submit" id="submit-button" on:click={sendMessage} on:click={handleBlur}><i class="material-icons">send</i></button>
-    <button type="button" id="clear-history" on:click={clearAndReload} on:click={handleBlur}><i class="material-symbols-outlined">delete</i></button>
-</form>
+<div id="text-field-container">
+    <div id="hide-bar" />
+    <form on:submit|preventDefault={handleEnter} id="text-field-box">
+        <input type="text" id="message" name="message" placeholder={langOpts.inputPlaceholder[lang]} on:input={clearSuggestions} on:focus={handleFocus} on:blur={handleBlur}>
+        <button type="submit" id="submit-button" on:click={sendMessage} on:click={handleBlur}><i class="material-icons">send</i></button>
+        <button type="button" id="clear-history" on:click={clearAndReload} on:click={handleBlur}><i class="material-symbols-outlined">delete</i></button>
+    </form>
+</div>
