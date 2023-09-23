@@ -460,7 +460,7 @@ export function generateInternalConversation () {
   if (suggestionActive || nudgeActive || suggestionCount >= maxSuggestions) {
     return
   }
-  const prompt = `State a list of three questions I should ask next.\n
+  const prompt = `State a list of three simple questions I should ask next.\n
   Ask the questions from the first person perspective.
   All questions need to be a single quesion each and nothing else.
   Respond in the ${langOpts.countryCode[lang]} language only.
