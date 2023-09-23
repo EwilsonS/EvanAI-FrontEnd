@@ -1,16 +1,11 @@
 <script>
   import { onMount } from "svelte";
-  import {
-    loadConversationHistory,
-  } from "../chat_script2";
+  import { loadConversationHistory } from "../chat_script2";
   import UserInput from "./components/UserInput.svelte";
   import SelectLanguage from "./components/SelectLanguage.svelte";
 
   export let agent = ''
 
-  let showModal = false;
-  let showList =false;
-  let showProfileModal = false;
   const box = document.getElementById("text-field-container");
 
   // Load the conversation history when the page loads

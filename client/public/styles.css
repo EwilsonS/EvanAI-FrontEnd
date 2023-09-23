@@ -459,7 +459,7 @@ h4 {
     width:980px;
     margin:auto;
     height:80vh;
-    background-color: #343541;
+    background-color: #004549;
     overflow:auto;
     position: relative;
     top: 0;
@@ -506,6 +506,7 @@ body, #app {
     display: flex;
     justify-content: right;
     align-items: center;
+    background-color: #002e30;
   }
 
 .popup-container {
@@ -513,7 +514,7 @@ body, #app {
 }
 
 #text-field-box {
-    background-color: #40414f;
+    background-color: #adadae;
     border: 5px ;
     width: 45vw;
     height: 51px;
@@ -529,7 +530,7 @@ body, #app {
 }
 
 #message, #email, #password {
-    background-color: #40414f;
+    background-color: #adadae;
     flex: 1;
     padding: 10px;
     font-size: 15px;
@@ -538,7 +539,7 @@ body, #app {
     margin-right: 8px;
     outline: none;
     height: auto;
-    color: #8e8e9f
+    color: rgb(33, 33, 33)
 
 }
 
@@ -547,8 +548,8 @@ body, #app {
     font-size: 16px;
     border-radius: 10px;
     border-color: transparent;
-    background-color: #40414f;
-    color: #8e8e9f;
+    background-color: #adadae;
+    color: #505056;
     outline: #0000;
     height: auto;
     width: 60px;
@@ -572,8 +573,8 @@ body, #app {
 }
 
 #hide-bar {
-    background-color: #272730;
-    background: linear-gradient(to bottom, rgba(53, 53, 64, 0) 15%, rgba(53, 53, 64, 1) 60%, rgba(53, 53, 64, 1));
+    background-color: #002e30;
+    /* background: linear-gradient(to bottom, rgba(53, 53, 64, 0) 15%, rgba(53, 53, 64, 1) 60%, rgba(53, 53, 64, 1)); */
     width: 100%;
     height: 10vh;
     position: absolute;
@@ -593,7 +594,7 @@ body, #app {
     margin: 0 auto;
     width: 100vw; /* Set width to 100vh to make it the same as the height */
     box-sizing: border-box;
-    background-color: #343541;
+    background-color: #004549;
     position: relative;
     min-height: 81vh;
     align-items: unset;
@@ -626,7 +627,7 @@ body, #app {
     margin: 0 auto;
     padding: 16px;
     box-sizing: border-box;
-    background-color: #444654;
+    background-color: #20295f;
     color: #d1d5db;
     min-height: auto;
     max-height: auto;
@@ -640,11 +641,12 @@ body, #app {
 
   #bot-message-container {
     border-style: solid;
-    border-color: #303139;
+    border-color: #004549;
+    background-color: #00555a;
     border-width: 0.1px;
   }
   #user-message-container{
-    background-color: #343541;
+    background-color: #004549;
   }
 
   .user-message, .bot-message {
@@ -770,11 +772,11 @@ body, #app {
   }
 
   #user-icon, #thumb-icon {
-    color: white;
+    color: #f9be34;
   }
 
   #bot-icon {
-    color: #0075be;
+    color: #f94834;
   }
 
 .send-suggestion-btn {
