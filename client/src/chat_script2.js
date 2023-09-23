@@ -1,6 +1,5 @@
 /* eslint-env browser */
 import { chosenProfile } from './lib/stores'
-import UserFeedback from './lib/components/UserFeedback.svelte'
 import ChatMessage from './lib/components/ChatMessage.svelte'
 import Icon from './lib/components/Icon.svelte'
 import { langOpts } from './switch_language'
@@ -17,9 +16,6 @@ const lang = localStorage.getItem('display_language') || 'en'
 function setAgentAndWelcomeMsg () {
   agent = new URLSearchParams(window.location.search).get('agent')
   welcomeMessage = langOpts.welcome[lang]
-  if (agent === 'educate') {
-    welcomeMessage = langOpts.welcomeEducate[lang]
-  }
 }
 // global variable to hold the timeout for the conversation
 // Initialize an array to store the conversation history
@@ -106,8 +102,7 @@ export function handleEnter (event) {
 
 function addStreamedMessage (chunk, sender, chunkSpan) {
   const chatContainer = document.getElementById('chat-container2')
-  // let copyBtn
-  let userButtons
+
   let messageContainer
   let innerMessageContainer
   let chunkDiv
@@ -115,9 +110,6 @@ function addStreamedMessage (chunk, sender, chunkSpan) {
 
   // message div
   if (chunkSpan === undefined) {
-    // Copy button
-    userButtons = document.createElement('div')
-
     // remove spacing element from previous message
     let spacingDiv
     if (document.getElementById('spacing')) {
@@ -157,17 +149,7 @@ function addStreamedMessage (chunk, sender, chunkSpan) {
 
   chunkSpan.innerHTML += chunk.replace(/\n/g, '<br>')
   buttonizeSuggestions(chunkSpan)
-  if (userButtons && messageContainer && innerMessageContainer && icon) {
-    // Append user feedback buttons component
-    userButtons = new UserFeedback({
-      target: innerMessageContainer,
-      props: {
-        feedbackActor: sender,
-        componentIndex: messageIndex,
-        activity: 'inactive'
-      }
-    })
-
+  if (messageContainer && innerMessageContainer && icon) {
     // spacing at bottom of the page
     const messageSpace = document.createElement('div')
     messageSpace.id = 'spacing'
@@ -237,18 +219,6 @@ export function addMessage (message, sender, animate = false, callback = undefin
     }
   })
   console.log('MessageDiv: ' + messageDiv)
-  if (sender === 'bot' && message !== welcomeMessage) {
-    // User Feedback buttons component
-    const userButtons = new UserFeedback({
-      target: innerMessageContainer,
-      props: {
-        feedbackActor: sender,
-        componentIndex: messageIndex,
-        activity: 'active'
-      }
-    })
-    console.log('User Feedback Buttons: ' + userButtons)
-  }
 
   // Mount elements to page
   messageContainer.append(innerMessageContainer)

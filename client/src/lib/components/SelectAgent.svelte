@@ -1,7 +1,7 @@
 <!--
   This component is a button to help toggle between views/agents.
   Add the component below with boolean prop to whichever components
-  you want to toggle between. Add vars and <q> tags to this as necessary
+  you want to toggle between. Add vars and <a> tags to this as necessary
 
   <SelectAgent isAdvisor={true} />
 -->
