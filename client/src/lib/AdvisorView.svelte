@@ -39,7 +39,6 @@
       fetch(baseUrl + '/profiles', {
         method: 'GET',
         headers: {
-          Authorization: 'Basic ' + creds,
           Accept: 'application/json'
         }
       })
