@@ -4,7 +4,7 @@
              clearHistory, clearSuggestions, generateConversationSummary} from "../chat_script2"
     import Modal from './components/Modal.svelte';
     import SearchResults from "./SearchResults.svelte";
-    import { baseUrl, creds } from "../chat_script2";
+    import { baseUrl } from "../chat_script2";
     import { chosenProfile, profiles, showSearchResults } from "./stores";
     import { langOpts } from "../switch_language";
 

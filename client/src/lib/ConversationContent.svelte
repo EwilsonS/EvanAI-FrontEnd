@@ -29,7 +29,7 @@ function continueConversation() {
 }
 </script>
 
-<h1 style="margin-top: 0;"  class:dark-mode={isDarkMode}>finGenie</h1>
+<h1 style="margin-top: 0;"  class:dark-mode={isDarkMode}>EvanAI</h1>
 <div id="chat-container" class:dark-mode={isDarkMode}></div>
 <form id="chat-form" class:dark-mode={isDarkMode}>
   <button on:click={(event) => {event.preventDefault(); continueConversation(); navigate('/');}}>Continue</button>

@@ -22,7 +22,7 @@
 
 </script>
 
-<h1 class:dark-mode={isDarkMode}>finGenie Create Profile</h1>
+<h1 class:dark-mode={isDarkMode}>EvanAI Create Profile</h1>
 <div id="profile-menu">
     <button id="back-btn" on:click="{() => navigate("/")}">Back to Chat</button>
 </div>

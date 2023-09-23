@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../styles.css">
 </svelte:head>
-<h1 style="margin-top: 0;" class:dark-mode={isDarkMode}>finGenie</h1>
+<h1 style="margin-top: 0;" class:dark-mode={isDarkMode}>EvanAI</h1>
 <div id="chat-container" class:dark-mode={isDarkMode}></div>
 <form id="chat-form" class:dark-mode={isDarkMode}>
   <input type="text" id="message" name="message" class:dark-mode={isDarkMode} required placeholder="Type your message..." on:input={() => clearSuggestions()}>

@@ -25,7 +25,7 @@
 <div id="profile-menu">
     <button id="back-btn" on:click="{() => navigate("/")}">Back to Chat</button>
 </div>
-<h1 class:dark-mode={isDarkMode}>finGenie Create Profile</h1>
+<h1 class:dark-mode={isDarkMode}>EvanAI Create Profile</h1>
 <div class="profile-form-container" class:dark-mode={isDarkMode} id="profile-form-container">
     <div class="profile-form">
         <form id="profile-form" class:dark-mode={isDarkMode}>

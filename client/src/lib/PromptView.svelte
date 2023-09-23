@@ -47,7 +47,7 @@
     <link rel="stylesheet" type="text/css" href="../styles.css" />
   </svelte:head>
   <div id="header-container">
-    <h4>finGenie</h4>
+    <h4>EvanAI</h4>
     <div style="margin-left:45vw">
       <button style=" width: 60px; margin-bottom: 10px;" on:click={() => (showList = true)}> Click </button>
       <button
