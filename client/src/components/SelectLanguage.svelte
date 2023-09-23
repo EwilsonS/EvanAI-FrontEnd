@@ -1,5 +1,5 @@
 <script>
-  import { clearHistory } from "../../chat_script2";
+  import { clearHistory } from "../chat_script2";
   let selectedLanguage = localStorage.getItem("display_language") || "en";
 
   function handleLanguageChange(event) {
@@ -53,14 +53,20 @@
 
   }
 
-  @media (max-width: 475px) {
+  @media (max-width: 900px) {
     #language-div {
       font-size: xx-small;
       position: fixed;
-      right: 20%;
+      right: 5%;
 
   }
+  
+}
+@media (max-width: 418px) {
+  #language-div {
+    visibility: hidden;
 
-  }
+}
+}
 
 </style>

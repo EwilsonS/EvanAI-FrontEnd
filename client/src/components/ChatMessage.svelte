@@ -6,7 +6,7 @@
 </svelte:head>
 <script>
     import { onMount } from "svelte";
-    import { clearBlinkers, buttonizeSuggestions } from "../../chat_script2";
+    import { clearBlinkers, buttonizeSuggestions } from "../chat_script2";
 
     export let sender
     export let index

@@ -1,7 +1,7 @@
 /* eslint-env browser */
-import { chosenProfile } from './lib/stores'
-import ChatMessage from './lib/components/ChatMessage.svelte'
-import Icon from './lib/components/Icon.svelte'
+import { chosenProfile } from './stores'
+import ChatMessage from './components/ChatMessage.svelte'
+import Icon from './components/Icon.svelte'
 import { langOpts } from './switch_language'
 
 export let baseUrl = import.meta.env.VITE_FIN_GENIE_BASE_URL

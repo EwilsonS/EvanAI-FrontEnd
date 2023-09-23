@@ -1,8 +1,9 @@
 <script>
-  import Chat2 from './lib/Chat2.svelte';
+  import Chat from './components/Chat.svelte';
   import { Router, Route } from "svelte-routing";
-  import Header from './lib/components/Header.svelte';
-  import UserInput from "./lib/components/UserInput.svelte";
+  import Header from './components/Header.svelte';
+  import UserInput from "./components/UserInput.svelte";
+  import Portfolio from './components/Portfolio.svelte';
 </script>
 
 <svelte:head>
@@ -29,9 +30,13 @@
 <Router>
   <div>
     <Route path="/">
-      <Header />
-      <Chat2 agent="agent"/>
+      <Header title='EvanAI'/>
+      <Chat agent="agent"/>
       <UserInput />
+    </Route>
+    <Route path="/portfolio">
+      <Header title='Portfolio' showLanguage={false}/>
+      <Portfolio />
     </Route>
   </div>
 </Router>

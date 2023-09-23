@@ -507,6 +507,8 @@ body, #app {
     justify-content: right;
     align-items: center;
     background-color: #002e30;
+    color: white;
+    height: 3em;
   }
 
 .popup-container {

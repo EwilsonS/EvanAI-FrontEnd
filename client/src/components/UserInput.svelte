@@ -7,8 +7,8 @@
 
 <script>
     import { handleEnter, sendMessage, clearSuggestions,
-             clearHistory } from "../../chat_script2";
-    import { langOpts } from "../../switch_language";
+             clearHistory } from "../chat_script2";
+    import { langOpts } from "../switch_language";
 
     const handleFocus = () => {
         if (navigator.userAgent.match(/webOS/i)
