@@ -51,20 +51,6 @@ chosenProfile.subscribe((value) => {
 let messageIndex = 0
 const messageClassIndex = 1
 
-let username = localStorage.getItem('username')
-let password = localStorage.getItem('password')
-
-if (!username || !password) {
-  username = prompt('Please enter your username:')
-  password = prompt('Please enter your password:')
-
-  if (username && password) {
-    localStorage.setItem('username', username)
-    localStorage.setItem('password', password)
-  }
-}
-export const creds = btoa(username + ':' + password)
-
 // Function to load the conversation history from localStorage
 export function loadConversationHistory () {
   const storedHistory = localStorage.getItem('conversationHistory') // eslint-disable-line no-undef
@@ -456,7 +442,6 @@ export function sendMessage (event) {
       body: JSON.stringify({ message: messageContent, history: conversationHistory, profile_id: profileId, user_profile: userProfile, agent, language: lang }),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Basic ' + creds,
         Accept: 'text/event-stream'
       }
     })
@@ -520,7 +505,6 @@ export function generateInternalConversation () {
     body: JSON.stringify({ prompt, history: conversationHistory, profile_id: profileId, agent, language: lang }),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + creds,
       Accept: 'text/event-stream'
     }
   })
@@ -580,7 +564,6 @@ export function generateConversationSummary () {
     body: JSON.stringify({ prompt, history: botResponses, agent, language: lang }),
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + creds,
       Accept: 'application/json'
     }
   })
@@ -649,7 +632,6 @@ export function writeConversationHistory () {
     body: raw,
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + creds,
       Accept: 'application/json'
     }
   })
@@ -755,7 +737,6 @@ export async function getSystemCards () {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Basic ' + creds,
         Accept: 'application/json'
       }
     })
@@ -774,7 +755,6 @@ export async function getCardData (name) {
       body: JSON.stringify({ file_name: fileName }),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Basic ' + creds,
         Accept: 'application/json'
       }
     })
@@ -797,7 +777,6 @@ export async function saveNewData (name, data) {
       }),
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Basic ' + creds,
         Accept: 'application/json'
       }
     })

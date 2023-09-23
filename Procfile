@@ -1,1 +1,1 @@
-web: npm run build && npm run dev
+web: npm install && npm run build && npm run dev -- --host 0.0.0.0 --port $PORT
