@@ -54,12 +54,12 @@
 	<div class="header">
 		<div class="topbar container" id="topbar">
 			<span class="name">Evan</span><span class="h1 text-danger">Wilson</span><br>
-			<span class="hurry-section text-light"><a class="text-white"
+			<div class="hurry-section text-light" id="top-links"><a class="text-white"
 					href="https://docs.google.com/document/d/1BHgEtdy1ROVBoPapIuC6zOTYJFveVuLMyMqWvQuH3_U/edit?usp=sharing"
 					target="_blank" rel="noopener">Resume </a><span class="text-danger">|</span> <a class="text-white"
 					href="https://github.com/EwilsonS" target="_blank" rel="noopener">Github </a><span class="text-danger">|</span> <a
 					class="text-white" href="https://www.linkedin.com/in/evanlovesyou" target="_blank" rel="noopener">LinkedIn
-				</a></span>
+				</a></div>
 		</div>
 
 	</div>
@@ -115,6 +115,7 @@
 									target="_blank" rel="noopener">
 									github
 								</a>
+								<br>
 								|
 								<a class="text-danger"
 									href="https://github.com/EwilsonS/EvanAI"
@@ -453,6 +454,7 @@
   margin: 0%;
   background-size: cover;
   background-attachment: fixed;
+	overflow: hidden;
 }
 
 .header {

@@ -28,10 +28,10 @@
 
 
 </script>
-<div id='agent-btn-container'>
+<span id='agent-btn-container'>
   <a href='/' on:click={clearHistory} class='select-agent-btn {isEvanai ? 'active-btn': ''}'>EvanAI</a>
   <a href='/portfolio' on:click={clearHistory} class='select-agent-btn {isPortfolio ? 'active-btn': ''}'>Portfolio</a>
-</div>
+</span>
 
 <style>
   #agent-btn-container {
@@ -53,5 +53,19 @@
 
   .active-btn  {
     background-color: rgb(164, 2, 2);
+  }
+
+  @media (max-width: 419px) {
+    #agent-btn-container {
+      margin: 0;
+      flex-direction: row;
+    }
+
+    .select-agent-btn {      
+      font-size: x-small;
+      text-decoration: none;
+      padding: 2px;
+      transition: .2s;
+    }
   }
 </style>

@@ -7,7 +7,7 @@
 </script>
 
 <div id="header-container">
-  <span>{title}</span>
+  <p id="header-title">{title}</p>
   <SelectAgent selection={title.toLowerCase()}/>
   <div style="margin-left:45vw">
     {#if showLanguage}
@@ -15,3 +15,9 @@
     {/if}
   </div>
 </div>
+
+<style>
+  #header-title {
+    margin: 0;
+  }
+</style>

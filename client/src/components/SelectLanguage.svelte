@@ -5,7 +5,7 @@
   function handleLanguageChange(event) {
     selectedLanguage = event.target.value;
     localStorage.setItem("display_language", selectedLanguage);
-    clearHistory()
+    // clearHistory()
     location.reload()
   }
 </script>

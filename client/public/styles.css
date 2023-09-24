@@ -928,11 +928,10 @@ body, #app {
         font-size: 14px;
     }
 
-    span {
+    .textContent {
         font-size: 14px;
         width: 140%;
         display: block;
-        /* overflow-x: hidden; */
     }
 
     .suggestion-btn {
