@@ -30,7 +30,7 @@ const conversationTimeout = 1 * 60 * 1000 // 1 minute before new suggestions
 // inactivity timeout before conversation history is saved
 const historyTimeout = 180000
 // state tracking for the suggestion
-const maxSuggestions = 2 // maximum number of suggestions to display
+const maxSuggestions = 1 // maximum number of suggestions to display
 let suggestionCount = 0 // number of suggestions displayed
 let suggestionActive = false // flag to prevent multiple suggestions
 let historyActive = false
@@ -55,7 +55,6 @@ export function loadConversationHistory () {
     conversationHistory.forEach(message => {
       addMessage(message.content, message.role === 'user' ? 'user' : 'bot')
     })
-    loadFeedback()
   } else {
     // Display the welcome message if there's no stored history
     setAgentAndWelcomeMsg()
@@ -205,7 +204,7 @@ export function addMessage (message, sender, animate = false, callback = undefin
       sender
     }
   })
-  console.log('Icon: ' + icon)
+
   // Chat Message Component
   const messageDiv = new ChatMessage({
     target: innerMessageContainer,
@@ -218,7 +217,6 @@ export function addMessage (message, sender, animate = false, callback = undefin
       addMessage: true
     }
   })
-  console.log('MessageDiv: ' + messageDiv)
 
   // Mount elements to page
   messageContainer.append(innerMessageContainer)
@@ -226,7 +224,8 @@ export function addMessage (message, sender, animate = false, callback = undefin
   chatContainer.append(messageSpace)
 
   // Do not count welcome message in index
-  if (message !== welcomeMessage) messageIndex++
+  // if (message !== welcomeMessage) 
+  messageIndex++
 
   // Scroll to the bottom of the chat container
   chatContainer.scrollTop = chatContainer.scrollHeight
@@ -241,86 +240,6 @@ export function addMessage (message, sender, animate = false, callback = undefin
   // Set a new internal conversation timeout
   internalConversationTimeout = setTimeout(generateInternalConversation, conversationTimeout)
   internalHistoryTimeout = setTimeout(writeConversationHistory, historyTimeout)
-}
-
-export function copyMessage (event) {
-  // Retrieve index of the clicked copy button
-  const index = event.target.classList[messageClassIndex]
-
-  // Retrieve the corresponding message
-  const messageToCopy = document.getElementById(`${index}`)
-
-  if (messageToCopy) {
-    const textToCopy = messageToCopy.innerHTML.replaceAll('\n', '<br>')
-    try {
-      navigator.clipboard.write([new ClipboardItem({ 'text/html': textToCopy })])
-      console.log('Copied to clipboard!')
-      event.target.innerHTML += '<br> done'
-      event.target.style.color = 'green'
-      setTimeout(() => {
-        event.target.innerHTML = 'content_copy'
-        event.target.style.color = 'lightgray'
-      }, 500)
-    } catch (err) {
-      console.error('Unable to copy', err)
-    }
-  }
-}
-
-export function setFeedback (event, index, value, oppositeButton, oppositeSymbol) {
-  conversationHistory.at(index).satisfied = value
-  localStorage.setItem('conversationHistory', JSON.stringify(conversationHistory))
-  event.target.innerHTML += '<br> done'
-  if (value) event.target.style.color = 'green'
-  else event.target.style.color = 'red'
-  oppositeButton.style.color = 'lightgray'
-  oppositeButton.innerHTML = oppositeSymbol
-}
-
-function loadFeedback () {
-  let userFeedbackButton
-  let feedbackValue
-  for (let i = 0; i < conversationHistory.length; i++) {
-    if (typeof (conversationHistory.at(i).satisfied) !== 'undefined' && conversationHistory.at(i).role === 'assistant') {
-      console.log('Conversation History Element ' + i + ': ' + JSON.stringify(conversationHistory.at(i)))
-      feedbackValue = conversationHistory.at(i).satisfied
-
-      switch (feedbackValue) {
-        case true:
-          userFeedbackButton = document.getElementById(`bot-up-${i}`)
-          userFeedbackButton.style.color = 'green'
-          userFeedbackButton.innerHTML += '<br> done'
-          break
-
-        case false:
-          userFeedbackButton = document.getElementById(`bot-down-${i}`)
-          userFeedbackButton.style.color = 'red'
-          userFeedbackButton.innerHTML += '<br> done'
-          break
-
-        default:
-          break
-      }
-    }
-  }
-}
-
-export function copyConversation (event) {
-  let resultFinal = ''
-  conversationHistory.forEach((item) => {
-    const result1 = item.role + ''
-    const result2 = item.content
-    resultFinal = '<br>' + resultFinal + result1.toUpperCase() + ':' + result2 + '<br><br>'
-    resultFinal = resultFinal.replaceAll('\n', '<br>')
-  }
-  )
-  event.target.innerHTML += ' done'
-  event.target.style.color = 'green'
-  setTimeout(() => {
-    event.target.innerHTML = 'content_copy'
-    event.target.style.color = 'lightgray'
-  }, 500)
-  navigator.clipboard.write([new ClipboardItem({ 'text/html': `${resultFinal}` })])
 }
 
 export function clearBlinkers () {
@@ -352,6 +271,7 @@ function setTimeouts (delay = conversationTimeout) {
 export function displayWelcomeMessage () {
   const callback = () => { setTimeout(generateInternalConversation, 500) }
   addMessage(welcomeMessage, 'bot', true, callback)
+  conversationHistory.push({ role: 'assistant', content: welcomeMessage })
 }
 
 export function nudgeUser () {
@@ -443,14 +363,9 @@ export function sendMessage (event) {
       .catch(error => {
         console.error('An error occurred:', error)
       })
-      .finally(() => {
-        const userButtons = document.getElementById(`button-container-${messageIndex - 1}`)
-        userButtons.classList.remove('inactive')
-        userButtons.classList.add('active')
-      })
   }
   // Update the suggestion active flag
-  suggestionActive = false
+  suggestionActive = true
   nudgeActive = false
   historyActive = false
   changeInputFocus(event) // set focus to text input box
@@ -494,6 +409,8 @@ export function generateInternalConversation () {
             suggestionActive = true
             suggestionCount++
             setTimeouts()
+            console.log(`Suggestion count: ${suggestionCount}`)
+
           }
           return
         }
@@ -509,11 +426,6 @@ export function generateInternalConversation () {
     })
     .catch(error => {
       console.error('An error occurred:', error)
-    })
-    .finally(() => {
-      const userButtons = document.getElementById(`button-container-${messageIndex - 1}`)
-      userButtons.classList.remove('inactive')
-      userButtons.classList.add('active')
     })
 }
 
@@ -568,17 +480,6 @@ function addSummary (summary) {
   summaryElement.scrollTop = summaryElement.scrollHeight
 }
 
-export function copySummary (event) {
-  const summaryElement = document.getElementById('popup-summary-text')
-  navigator.clipboard.write([new ClipboardItem({ 'text/html': summaryElement.innerHTML.replaceAll('\n', '<br>') })])
-  event.target.innerHTML += ' done'
-  event.target.style.color = 'green'
-  setTimeout(() => {
-    event.target.innerHTML = 'content_copy'
-    event.target.style.color = 'lightgray'
-  }, 500)
-}
-
 export function clearSuggestions () {
   // Clear any existing internal conversation timeout
   if (internalConversationTimeout) {
@@ -592,26 +493,7 @@ export function clearSuggestions () {
 }
 
 export function writeConversationHistory () {
-  if (historyActive) return
-  if (conversationHistory.length <= 0) return
-  // Send a request to the server to generate a response
-
-  const raw = JSON.stringify({ history: conversationHistory })
-  fetch(baseUrl + '/save_history', {
-    method: 'POST',
-    body: raw,
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    }
-  })
-    .then(response => response.json())
-    .then(data => { // TODO if we are not using data remove it
-      // Remove the "Generating response..." message and display the bot's response
-      console.log(data)
-    })
-
-  historyActive = true
+  console.log('writeConversationHistory placeholder')
 }
 
 function changeInputFocus (event, selector = 'input[name="message"]') {

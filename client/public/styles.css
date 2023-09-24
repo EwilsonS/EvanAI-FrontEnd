@@ -672,17 +672,6 @@ body, #app {
     padding-left: 45px;
   }
 
-  .button-container.inactive {
-    display: none;
-  }
-
-  .button-container.active {
-    display: flex;
-    gap: 10px; /* Adjust this value to control the spacing between buttons */
-    align-items: start;
-    margin-left: 4vh;
-  }
-
   #copy-content, #options-btn, #profile-btn {
     color: lightgray;
     text-align: center;
@@ -903,9 +892,12 @@ body, #app {
     }
 
     .message-container{
-        display: flex;
+        display: block;
         width: 100%;
         min-width: 80vw;
+        position: relative;
+        right: 20px;
+        overflow-x: hidden;
     }
 
     #user-icon, #bot-icon {
@@ -938,14 +930,10 @@ body, #app {
 
     span {
         font-size: 14px;
+        width: 140%;
+        display: block;
+        /* overflow-x: hidden; */
     }
-
-    .button-container.active {
-        display: flex;
-        gap: 0; /* Adjust this value to control the spacing between buttons */
-        align-items: start;
-        margin-left: .25vh;
-      }
 
     .suggestion-btn {
         width: 100%;
