@@ -409,8 +409,6 @@ export function generateInternalConversation () {
             suggestionActive = true
             suggestionCount++
             setTimeouts()
-            console.log(`Suggestion count: ${suggestionCount}`)
-
           }
           return
         }
@@ -501,24 +499,26 @@ function changeInputFocus (event, selector = 'input[name="message"]') {
    * Change the focus to the input element by querying the selector.
    */
   const inputElement = document.querySelector(selector)
-  inputElement.focus()
+  if (inputElement) inputElement.focus()
 }
 
 let scrollTimeout
 let lastScrollTop = 0
 
 function addScrollEvent () {
-  document.getElementById('chat-container2').addEventListener('scroll', function (event) {
-    clearTimeout(scrollTimeout)
-    let scrollUpDirection = false
-    const currentScrollTop = event.target.scrollTop
-    if (currentScrollTop < lastScrollTop) {
-      scrollUpDirection = true
-    }
-    lastScrollTop = currentScrollTop
-    scrollTimeout = setTimeout(function () {
-    }, 500)
-  })
+  if (document.getElementById('chat-container2')) {
+    document.getElementById('chat-container2').addEventListener('scroll', function (event) {
+      clearTimeout(scrollTimeout)
+      let scrollUpDirection = false
+      const currentScrollTop = event.target.scrollTop
+      if (currentScrollTop < lastScrollTop) {
+        scrollUpDirection = true
+      }
+      lastScrollTop = currentScrollTop
+      scrollTimeout = setTimeout(function () {
+      }, 500)
+    })
+  }
 }
 
 export function buttonizeSuggestions (chunkSpan) {
@@ -573,14 +573,16 @@ document.addEventListener('DOMContentLoaded', function () {
   setTimeout(() => { changeInputFocus('DOMContentLoaded') }, 100) // set focus to text input box after 100ms
 
   // Attach the keyup event listener
-  inputField.addEventListener('keyup', function () {
-    setTimeouts()
-  })
-
-  // Attach the focus event listener
-  inputField.addEventListener('focus', function () {
-    setTimeouts()
-  })
+  if (inputField) {
+    inputField.addEventListener('keyup', function () {
+      setTimeouts()
+    })
+    
+    // Attach the focus event listener
+    inputField.addEventListener('focus', function () {
+      setTimeouts()
+    })
+  }
 })
 
 export async function getSystemCards () {

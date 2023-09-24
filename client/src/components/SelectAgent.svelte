@@ -7,8 +7,6 @@
 -->
 
 <script>
-  import { clearHistory } from "../chat_script2"
-
   export let selection = ''
   export let isEvanai = false
   export let isPortfolio = false
@@ -29,8 +27,8 @@
 
 </script>
 <span id='agent-btn-container'>
-  <a href='/' on:click={clearHistory} class='select-agent-btn {isEvanai ? 'active-btn': ''}'>EvanAI</a>
-  <a href='/portfolio' on:click={clearHistory} class='select-agent-btn {isPortfolio ? 'active-btn': ''}'>Portfolio</a>
+  <a href='/' class='select-agent-btn {isEvanai ? 'active-btn': ''}'>EvanAI</a>
+  <a href='/portfolio' class='select-agent-btn {isPortfolio ? 'active-btn': ''}'>Portfolio</a>
 </span>
 
 <style>
