@@ -43,7 +43,7 @@
   <div>
     <Route path="/">
       <Header title='EvanAI'/>
-      <Chat agent="agent"/>
+      <Chat agent="evan-bot"/>
       <UserInput />
     </Route>
     <Route path="/portfolio">
