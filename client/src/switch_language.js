@@ -28,5 +28,15 @@ export const langOpts = {
     en: 'english',
     es: 'spanish',
     fr: 'french'
+  },
+  portfolio: {
+    en: 'Portfolio',
+    es: 'Portafolio',
+    fr: 'Portefeuille'
+  },
+  generateTopics: {
+    en: 'Generate Topics',
+    es: 'Generar temas',
+    fr: 'Générer des sujets'
   }
 }

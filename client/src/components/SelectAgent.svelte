@@ -7,9 +7,12 @@
 -->
 
 <script>
+  import { langOpts } from "../switch_language";
+
   export let selection = ''
   export let isEvanai = false
   export let isPortfolio = false
+  const lang = localStorage.getItem("display_language") || "en";
 
   switch(selection) {
     case 'evanai': {
@@ -28,7 +31,7 @@
 </script>
 <span id='agent-btn-container'>
   <a href='/' class='select-agent-btn {isEvanai ? 'active-btn': ''}'>EvanAI</a>
-  <a href='/portfolio' class='select-agent-btn {isPortfolio ? 'active-btn': ''}'>Portfolio</a>
+  <a href='/portfolio' class='select-agent-btn {isPortfolio ? 'active-btn': ''}'>{langOpts.portfolio[lang]}</a>
 </span>
 
 <style>

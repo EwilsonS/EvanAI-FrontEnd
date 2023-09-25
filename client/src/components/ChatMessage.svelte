@@ -7,6 +7,7 @@
 <script>
     import { onMount } from "svelte";
     import { clearBlinkers, buttonizeSuggestions, generateInternalConversation } from "../chat_script2";
+    import { langOpts } from "../switch_language";
 
     export let sender
     export let index
@@ -15,6 +16,8 @@
     export let callback
     export let addMessage
     export let welcomeMessage
+
+    const lang = localStorage.getItem("display_language") || "en";
 
     let showGenBtn = false
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,;0123456789'
@@ -113,6 +116,6 @@
     </span>
     {#if showGenBtn}
         <br><br>
-        <button id='gen-suggestion-btn' on:click={generateInternalConversation}>Generate Topics</button>
+        <button id='gen-suggestion-btn' on:click={generateInternalConversation}>{langOpts.generateTopics[lang]}</button>
     {/if}
 </div>
