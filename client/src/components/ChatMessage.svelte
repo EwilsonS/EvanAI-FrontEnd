@@ -73,7 +73,7 @@
             setTimeout(() => typeWriter(container, text, callback, currentChunkIndex, charIndex), 1)
             } else {
             // Introduce a 5% chance to make a mistake
-            const makeMistake = Math.random() < 0.007
+            const makeMistake = Math.random() < 0.000
             if (makeMistake && charIndex !== 0) { // Ensure not to make mistake on first character
                 // Add a wrong character
                 container.innerHTML += getRandomCharacter()
