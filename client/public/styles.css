@@ -231,7 +231,7 @@ button {
     animation: fadeBackground 1.5s;
 }
 
-.send-suggestion-btn:hover {
+.send-suggestion-btn:hover, #gen-suggestion-btn:hover {
     background-color: #00588f;
     transition: .25s;
     cursor: pointer;
@@ -239,6 +239,17 @@ button {
 
 .blinker {
     animation: blinking 1s infinite;
+}
+
+#gen-suggestion-btn {
+    font-size: small;
+    /* margin-left: 5px; */
+    position: relative;
+    left: 25%;
+    border-radius: 100px;
+    background-color:#0075be;
+    color:#ffffff;
+    animation: fadeBackground 1.5s;
 }
 
 @media (width <= 1370px){

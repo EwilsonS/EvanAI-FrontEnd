@@ -20,20 +20,13 @@ function setAgentAndWelcomeMsg () {
 // global variable to hold the timeout for the conversation
 // Initialize an array to store the conversation history
 let conversationHistory = []
-let internalConversationTimeout
-let internalHistoryTimeout
 const nudgeTimeout = 3 * 60 * 1000 // 3 minutes before nudge
 let nudge // used to track the nudge callback
 let nudgeActive = false // do not nudge the user if they are already active
 // timeout before new topics are suggested
 const conversationTimeout = 1 * 60 * 1000 // 1 minute before new suggestions
-// inactivity timeout before conversation history is saved
-const historyTimeout = 180000
-// state tracking for the suggestion
-const maxSuggestions = 1 // maximum number of suggestions to display
 let suggestionCount = 0 // number of suggestions displayed
 let suggestionActive = false // flag to prevent multiple suggestions
-let historyActive = false
 let profile = ''
 chosenProfile.subscribe((value) => {
   if (Object.keys(value).includes('id')) {
@@ -139,7 +132,8 @@ function addStreamedMessage (chunk, sender, chunkSpan) {
         animate: false,
         message: '',
         callback: undefined,
-        addMessage: false
+        addMessage: false,
+        welcomeMessage: ''
       }
     })
 
@@ -161,18 +155,6 @@ function addStreamedMessage (chunk, sender, chunkSpan) {
   }
   // Scroll to the bottom of the chat container
   chatContainer.scrollTop = chatContainer.scrollHeight
-
-  // Clear any existing internal conversation timeout
-  if (internalConversationTimeout) {
-    clearTimeout(internalConversationTimeout)
-  }
-  if (internalHistoryTimeout) {
-    clearTimeout(internalHistoryTimeout)
-  }
-  // Set a new internal conversation timeout
-  internalConversationTimeout = setTimeout(generateInternalConversation, conversationTimeout)
-  internalHistoryTimeout = setTimeout(writeConversationHistory, historyTimeout)
-
   return chunkSpan
 }
 
@@ -214,7 +196,8 @@ export function addMessage (message, sender, animate = false, callback = undefin
       animate,
       message,
       callback,
-      addMessage: true
+      addMessage: true,
+      welcomeMessage
     }
   })
 
@@ -224,22 +207,10 @@ export function addMessage (message, sender, animate = false, callback = undefin
   chatContainer.append(messageSpace)
 
   // Do not count welcome message in index
-  // if (message !== welcomeMessage) 
   messageIndex++
 
   // Scroll to the bottom of the chat container
   chatContainer.scrollTop = chatContainer.scrollHeight
-
-  // Clear any existing internal conversation timeout
-  if (internalConversationTimeout) {
-    clearTimeout(internalConversationTimeout)
-  }
-  if (internalHistoryTimeout) {
-    clearTimeout(internalHistoryTimeout)
-  }
-  // Set a new internal conversation timeout
-  internalConversationTimeout = setTimeout(generateInternalConversation, conversationTimeout)
-  internalHistoryTimeout = setTimeout(writeConversationHistory, historyTimeout)
 }
 
 export function clearBlinkers () {
@@ -255,22 +226,13 @@ export function clearBlinkers () {
 }
 
 function setTimeouts (delay = conversationTimeout) {
-  // const delay = conversationTimeout // * Math.pow(2, suggestionCount)
-
-  if (internalConversationTimeout) { clearTimeout(internalConversationTimeout) }
-  internalConversationTimeout = setTimeout(generateInternalConversation, delay)
-
-  if (internalHistoryTimeout) { clearTimeout(internalHistoryTimeout) }
-  // save the conversation history after a delay
-  internalHistoryTimeout = setTimeout(writeConversationHistory, historyTimeout)
-
   if (nudge) { clearTimeout(nudge) }
   nudge = setTimeout(nudgeUser, nudgeTimeout) // nudge the user after inactivity
 }
 
 export function displayWelcomeMessage () {
-  const callback = () => { setTimeout(generateInternalConversation, 500) }
-  addMessage(welcomeMessage, 'bot', true, callback)
+  // const callback = () => { setTimeout(generateInternalConversation, 500) }
+  addMessage(welcomeMessage, 'bot', true)
   conversationHistory.push({ role: 'assistant', content: welcomeMessage })
 }
 
@@ -367,12 +329,12 @@ export function sendMessage (event) {
   // Update the suggestion active flag
   suggestionActive = true
   nudgeActive = false
-  historyActive = false
+  // historyActive = false
   changeInputFocus(event) // set focus to text input box
 }
 
 export function generateInternalConversation () {
-  if (suggestionActive || nudgeActive || suggestionCount >= maxSuggestions) {
+  if (suggestionActive || nudgeActive ) {
     return
   }
   const prompt = `State a list of three simple questions I should ask next.\n
@@ -479,15 +441,7 @@ function addSummary (summary) {
 }
 
 export function clearSuggestions () {
-  // Clear any existing internal conversation timeout
-  if (internalConversationTimeout) {
-    clearTimeout(internalConversationTimeout)
-  }
-  if (internalHistoryTimeout) {
-    clearTimeout(internalHistoryTimeout)
-  }
-  internalConversationTimeout = setTimeout(generateInternalConversation, conversationTimeout)
-  internalHistoryTimeout = setTimeout(writeConversationHistory, historyTimeout)
+  console.log('clearSuggestions placeholer')
 }
 
 export function writeConversationHistory () {

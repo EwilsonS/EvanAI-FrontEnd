@@ -6,7 +6,7 @@
 </svelte:head>
 <script>
     import { onMount } from "svelte";
-    import { clearBlinkers, buttonizeSuggestions } from "../chat_script2";
+    import { clearBlinkers, buttonizeSuggestions, generateInternalConversation } from "../chat_script2";
 
     export let sender
     export let index
@@ -14,7 +14,9 @@
     export let message
     export let callback
     export let addMessage
+    export let welcomeMessage
 
+    let showGenBtn = false
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,;0123456789'
     const regexTags = /<[^>]+>|[^<]+/g // matches both text and HTML tags
     let messageDiv
@@ -27,7 +29,7 @@
                 cursorSpan.className = 'blinker'
                 cursorSpan.textContent = ' █'
                 messageDiv.appendChild(cursorSpan)
-                cursorSpan.style.animation = 'fadeout 1s 0s reverse'
+                cursorSpan.style.animation = 'fadeout 1s 0s reverse'                
             }
 
             if (animate) {
@@ -37,7 +39,7 @@
             } else {
                 chunkSpan.innerHTML = message.replace(/\n/g, '<br>')
             }
-
+           
             buttonizeSuggestions(chunkSpan)
         }
         else {
@@ -95,12 +97,22 @@
             if (callback) {
             callback() // call the callback after typing is complete
             }
-            setTimeout(() => clearBlinkers(), 1000) // clear cursors after a brief delay
+            setTimeout(() => {
+                clearBlinkers()
+                if (message === welcomeMessage) {
+                    showGenBtn = true
+                }
+            }, 1000) // clear cursors after a brief delay
         }
+        
     }
 
 </script>
 <div bind:this={messageDiv} class={`${sender}-message`} id={index}>
     <span bind:this={chunkSpan} class='textContent' id={index}>
     </span>
+    {#if showGenBtn}
+        <br><br>
+        <button id='gen-suggestion-btn' on:click={generateInternalConversation}>Generate Topics For Me</button>
+    {/if}
 </div>
