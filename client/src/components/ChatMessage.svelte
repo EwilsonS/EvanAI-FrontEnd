@@ -113,6 +113,6 @@
     </span>
     {#if showGenBtn}
         <br><br>
-        <button id='gen-suggestion-btn' on:click={generateInternalConversation}>Generate Topics For Me</button>
+        <button id='gen-suggestion-btn' on:click={generateInternalConversation}>Generate Topics</button>
     {/if}
 </div>

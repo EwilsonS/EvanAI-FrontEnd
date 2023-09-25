@@ -20,13 +20,7 @@ function setAgentAndWelcomeMsg () {
 // global variable to hold the timeout for the conversation
 // Initialize an array to store the conversation history
 let conversationHistory = []
-const nudgeTimeout = 3 * 60 * 1000 // 3 minutes before nudge
-let nudge // used to track the nudge callback
-let nudgeActive = false // do not nudge the user if they are already active
-// timeout before new topics are suggested
-const conversationTimeout = 1 * 60 * 1000 // 1 minute before new suggestions
-let suggestionCount = 0 // number of suggestions displayed
-let suggestionActive = false // flag to prevent multiple suggestions
+let suggestionActive = false
 let profile = ''
 chosenProfile.subscribe((value) => {
   if (Object.keys(value).includes('id')) {
@@ -56,9 +50,6 @@ export function loadConversationHistory () {
 }
 
 export function clearHistory () {
-  suggestionActive = false
-  suggestionCount = 0
-  nudgeActive = false // do not nudge the user after clearing the history
   // Clear the chat container
   const chatContainer = document.getElementById('chat-container2')
   chatContainer.innerHTML = ''
@@ -225,26 +216,9 @@ export function clearBlinkers () {
   })
 }
 
-function setTimeouts (delay = conversationTimeout) {
-  if (nudge) { clearTimeout(nudge) }
-  nudge = setTimeout(nudgeUser, nudgeTimeout) // nudge the user after inactivity
-}
-
 export function displayWelcomeMessage () {
-  // const callback = () => { setTimeout(generateInternalConversation, 500) }
   addMessage(welcomeMessage, 'bot', true)
   conversationHistory.push({ role: 'assistant', content: welcomeMessage })
-}
-
-export function nudgeUser () {
-  /**
-   * Nudge the user to continue the conversation.
-   */
-  if (nudgeActive === false) {
-    addMessage(langOpts.nudge[lang], 'bot', true)
-    nudgeActive = true // do not spam the user with nudges
-    suggestionActive = true // do not suggest new topics after nudging
-  }
 }
 
 function getProfileId () {
@@ -308,7 +282,6 @@ export function sendMessage (event) {
               setTimeout(() => clearBlinkers(), 1000) // clear cursors after a brief delay              
               conversationHistory.push({ role: 'assistant', content: accumulatedText.join('') })
               saveConversationHistory() // Save the updated conversation history to localStorage
-              setTimeouts()
             }
             return
           }
@@ -326,17 +299,16 @@ export function sendMessage (event) {
         console.error('An error occurred:', error)
       })
   }
-  // Update the suggestion active flag
-  suggestionActive = true
-  nudgeActive = false
-  // historyActive = false
+
   changeInputFocus(event) // set focus to text input box
 }
 
 export function generateInternalConversation () {
-  if (suggestionActive || nudgeActive ) {
+  if (suggestionActive) {
     return
   }
+  suggestionActive = true
+
   const prompt = `State a list of three simple questions I should ask next.\n
   Ask the questions from the first person perspective.
   All questions need to be a single quesion each and nothing else.
@@ -368,9 +340,6 @@ export function generateInternalConversation () {
             conversationHistory.pop() // remove the last prompt
             conversationHistory.push({ role: 'assistant', content: accumulatedText.join(''), satisfied: undefined })
             saveConversationHistory() // Save the updated conversation history to localStorage
-            suggestionActive = true
-            suggestionCount++
-            setTimeouts()
           }
           return
         }
@@ -528,14 +497,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Attach the keyup event listener
   if (inputField) {
-    inputField.addEventListener('keyup', function () {
-      setTimeouts()
-    })
+    inputField.addEventListener('keyup', function () {})
     
     // Attach the focus event listener
-    inputField.addEventListener('focus', function () {
-      setTimeouts()
-    })
+    inputField.addEventListener('focus', function () {})
   }
 })
 

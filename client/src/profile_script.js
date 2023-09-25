@@ -27,9 +27,9 @@ export function generateUserProfileSummary () {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Response: ', data)
+        // console.log('Response: ', data)
         localStorage.setItem('userSummary', data)
-        console.log('Local Storage: ', localStorage)
+        // console.log('Local Storage: ', localStorage)
         userProfile = data
         document.getElementById('user-profile').classList.remove('inactive')
         document.getElementById('clear-user-history').classList.remove('inactive')
