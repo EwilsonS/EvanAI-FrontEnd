@@ -55,7 +55,7 @@
 		<div class="topbar container" id="topbar">
 			<span class="name">Evan</span><span class="h1 text-danger">Wilson</span><br>
 			<div class="hurry-section text-light" id="top-links"><a class="text-white"
-					href="https://docs.google.com/document/d/1BHgEtdy1ROVBoPapIuC6zOTYJFveVuLMyMqWvQuH3_U/edit?usp=sharing"
+					href="https://docs.google.com/document/d/1Eg_ifzeNwckr5XSWvt2z_My1dxFPNo_dVQAJTt-DLjw/edit?usp=sharing"
 					target="_blank" rel="noopener">Resume </a><span class="text-danger">|</span> <a class="text-white"
 					href="https://github.com/EwilsonS" target="_blank" rel="noopener">Github </a><span class="text-danger">|</span> <a
 					class="text-white" href="https://www.linkedin.com/in/evanlovesyou" target="_blank" rel="noopener">LinkedIn
@@ -369,7 +369,7 @@
 					target="_top">wilsonscottevan@gmail.com</a>
 				<span class="text-danger"> | </span>
 				<a class="h6 text-light" id=""
-					href="https://docs.google.com/document/d/1BHgEtdy1ROVBoPapIuC6zOTYJFveVuLMyMqWvQuH3_U/edit?usp=sharing"
+					href="https://docs.google.com/document/d/1Eg_ifzeNwckr5XSWvt2z_My1dxFPNo_dVQAJTt-DLjw/edit?usp=sharing"
 					target="_blank" rel="noopener">
 					Resume</a>
 				<span class="text-danger"> | </span>
