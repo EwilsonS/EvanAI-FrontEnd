@@ -143,7 +143,7 @@
 							<span>
 								<a class="text-dark"
 									href="https://drive.google.com/file/d/1JsBV9MlytMzsCrodFJK1F1aRGJBJ4T8x/view?usp=sharing"
-									target="_blank" rel="noopener">
+									target="_blank" rel="noopener" disabled='true'>
 									video demo
 								</a>
 								|
@@ -170,13 +170,16 @@
 							<br>
 							<br>
 							<span>
-								<a class="text-dark" href="https://sound-stock.herokuapp.com/" target="_blank" rel="noopener">
+								<!-- href="https://sound-stock.herokuapp.com/" target="_blank" rel="noopener" -->
+								<s class="text-dark" >
 									deployed site
-								</a>
+								</s>
 								|
 								<a class="text-danger" href="https://github.com/EwilsonS/EvanSoundStock" target="_blank" rel="noopener">
 									github
 								</a>
+								<br>
+								<small>(uh-oh, fixing heroku deployment)</small>
 							</span>
 						</div>
 					</div>
