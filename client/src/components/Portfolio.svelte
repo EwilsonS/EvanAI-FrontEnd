@@ -290,7 +290,8 @@
 			<div class="col-sm-4 skills">
 				<p class="text-center about-text font-weight-bold">Skills</p>
 				<p class="about-text text-center">			
-					<img src="./assets/images/aws-certified-cloud-practitioner.png" alt="">		
+					<img src="./assets/images/aws-certified-cloud-practitioner.png" alt="">	
+					<img src="./assets/images/aws-certified-solutions-architect-associate.png" alt="">		
 				</p>
 				<div class="about-text">
 					<p class="p-0">
