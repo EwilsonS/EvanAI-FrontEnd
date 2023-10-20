@@ -170,16 +170,13 @@
 							<br>
 							<br>
 							<span>
-								<!-- href="https://sound-stock.herokuapp.com/" target="_blank" rel="noopener" -->
-								<s class="text-dark" >
+								<a class="text-dark" href="https://sound-stock.herokuapp.com/" target="_blank" rel="noopener">
 									deployed site
-								</s>
+								</a>
 								|
 								<a class="text-danger" href="https://github.com/EwilsonS/EvanSoundStock" target="_blank" rel="noopener">
 									github
 								</a>
-								<br>
-								<small>(uh-oh, fixing heroku deployment)</small>
 							</span>
 						</div>
 					</div>
