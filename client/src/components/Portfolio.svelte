@@ -126,7 +126,7 @@
 						</div>
 					</div>
 					<!-- Stwitter -->
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<!-- <div class="card works mx-3 p-2 text-center rounded-0">
 						<h5 class="text-center">Simple Twitter
 						</h5>
 						<br>
@@ -154,7 +154,7 @@
 								</a>
 							</span>
 						</div>
-					</div>
+					</div> -->
 					<!-- Sound Stock -->
 					<div class="card works mx-3 p-2 text-center rounded-0">
 						<div>
