@@ -16,19 +16,16 @@
 	</script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
 		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-	</script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
 		integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	<title>E. Wilson</title>
 </svelte:head>
 
 <div id="portfolio">
 	<div class="side-nav text-center">
-
 		<a class="scroll" href="#topbar">
 			<i class="fas fa-home side-icon other-side-icons"></i>
 		</a>
@@ -85,132 +82,165 @@
 		</div>
 
 		<!-- Work -->
-		<div class="row works-row" id="works-section">
-			<div class="col-sm-12 text-center">
-				<h3>Samples</h3>
-				<br>
-				<div class="card-group">
-					<!-- EvanAI -->
-					<div class="card works mx-3 p-2 text-center rounded-0">
-						<h5 class="text-center">EvanAI</h5>
-						<br>
-						<div>
-							<p class="text-dark">
-								My personalized AI chatbot, so you and I can chat anytime!
-							</p>
-							<p class="tech-describe m-0">
-								PYTHON ➕ SVELTE ➕ OPENAI
-							</p>
-							<button type="button" class="show-me" data-toggle="modal" data-target="#evanAI">Preview</button>
-							<br>
-							<br>
-							<span>
-								<a class="text-dark" 
-									href="/" rel="noopener">
-									deployed site
-								</a>
-								|
-								<a class="text-danger"
-									href="https://github.com/EwilsonS/EvanAI-FrontEnd"
-									target="_blank" rel="noopener">
-									github
-								</a>
-								<br>
-								|
-								<a class="text-danger"
-									href="https://github.com/EwilsonS/EvanAI"
-									target="_blank" rel="noopener">
-									github2
-								</a>
-							</span>
-						</div>
-					</div>
-					<!-- Stwitter -->
-					<!-- <div class="card works mx-3 p-2 text-center rounded-0">
-						<h5 class="text-center">Simple Twitter
-						</h5>
-						<br>
-						<div>
-							<p class="text-dark">
-								Simple social media service
-							</p>
-							<p class="tech-describe m-0">
-								JAVA ➕ SQL
-							</p>
-							<button type="button" class="show-me" data-toggle="modal" data-target="#java">Preview</button>
-							<br>
-							<br>
-							<span>
-								<a class="text-dark"
-									href="https://drive.google.com/file/d/1JsBV9MlytMzsCrodFJK1F1aRGJBJ4T8x/view?usp=sharing"
-									target="_blank" rel="noopener" disabled='true'>
-									video demo
-								</a>
-								|
-								<a class="text-danger"
-									href="https://github.com/EwilsonS/Evan_Wilson_JavaS1/tree/master/EvanWilsonU2M2Summative"
-									target="_blank" rel="noopener">
-									github
-								</a>
-							</span>
-						</div>
-					</div> -->
-					<!-- Sound Stock -->
-					<div class="card works mx-3 p-2 text-center rounded-0">
-						<div>
-							<h5 class="text-dark text-center">SoundStock</h5>
-							<p class="text-dark">
-								Crowdfunding meets shared publishing
-								<br> <small>(login credentials provided)</small>
-							</p>
-							<p class="tech-describe m-0">
-								REACT ➕ NoSQL
-							</p>
-							<button type="button" class="show-me" data-toggle="modal" data-target="#soundstock">Preview</button>
-							<br>
-							<br>
-							<span>
-								<a class="text-dark" href="https://sound-stock.herokuapp.com/" target="_blank" rel="noopener">
-									deployed site
-								</a>
-								|
-								<a class="text-danger" href="https://github.com/EwilsonS/EvanSoundStock" target="_blank" rel="noopener">
-									github
-								</a>
-							</span>
-						</div>
-					</div>
-					<!-- Sharepost -->
-					<div class="card works mx-3 p-2 text-center rounded-0">
-						<h5 class="text-dark text-center">SharePosts</h5>
-						<div>
-							<p class="text-dark">
-								Login and post messages for others to read 
-								<br> <small>(login credentials provided)</small>
-							</p>
-							<p class="tech-describe m-0">
-								PHP ➕ SQL
-							</p>
-							<button type="button" class="show-me" data-toggle="modal" data-target="#shareposts">Preview</button>
-							<br>
-							<br>
-							<span>
-								<a class="text-dark" href="https://share-posts.herokuapp.com/" target="_blank" rel="noopener">
-									deployed site
-								</a>
-								|
-								<a class="text-danger" href="https://github.com/EwilsonS/SharePosts" target="_blank" rel="noopener">
-									github
-								</a>
-							</span>
-						</div>
-					</div>
+		<h3 class="text-center" id="works-section">Samples</h3>
+
+		<!-- EvanAI -->
+		<div class="row works p-4 my-5">			
+			<div class="col-sm-2">
+				<div>
+					<span class="fs-2 text-break">EvanAI</span>
+					<p class="text-dark">
+						My personalized AI chatbot
+					</p>		
+					<div class="my-2">
+						<img src="./assets/images/icons8-python-96.png" alt="" width="30%">
+						<img src="./assets/images/icons8-svelte-480.png" alt="" width="30%">
+						<img src="./assets/images/icons8-chatgpt-96.png" alt="" width="30%">
+					</div>			
+					<br>
+					<span class="mb-2">
+						<img src="./assets/images/icons8-link-90.png" alt="" width="15%">								
+						<a class="text-dark" href="/" rel="noopener">deployed site</a>
+					</span>
+					<br>
+					<span class="mb-2">
+						<img src="./assets/images/icons8-github-48.png" alt="" width="15%">	
+						<a class="text-dark" href="https://github.com/EwilsonS/EvanAI-FrontEnd"	target="_blank" rel="noopener">github-frontend</a>
+					</span>
+					<br>
+					<span class="mb-2">
+						<img src="./assets/images/icons8-github-48.png" alt="" width="15%">	
+						<a class="text-dark" href="https://github.com/EwilsonS/EvanAI" target="_blank" rel="noopener">github-backend</a>					
+					</span>
 				</div>
 			</div>
+			<div class="col-sm-5">
+				<p>
+					I wanted to become familiar with ChatGPT, as my work colleagues and I were making efforts to apply AI for the bank. It only seemed right to build a personal project that demonstrates my newfound knowledge.
+				</p>
+				<p>					
+					This custom Python application is pretty simple. It uses a FastAPI server and local storage for 'persistence,' keeping it straightforward. The OpenAI API is straightforward and customizable. I'm using the GPT-3.5-turbo model.
+				</p>
+				<p>	
+					On the front end, I went with Svelte, which is definitely off the beaten path. I also added Google Analytics for fun. 
+				</p>
+			</div>
+			<div class="col-sm-5">
+				<img src="./assets/images/EvanAI2.png" alt="" width="100%">
+			</div>					
+		</div>
+		
+		<!-- Sound Stock -->
+		<div class="row works p-4 my-5">			
+			<div class="col-sm-2">
+				<div>
+					<p class="fs-2 text-break">SoundStock</p>
+					<p class="text-dark">
+						Crowdfunding meets shared publishing
+					</p>		
+					<div class="my-2">
+						<img src="./assets/images/icons8-nodejs-96.png" alt="" width="30%">
+						<img src="./assets/images/icons8-react-100.png" alt="" width="30%">
+						<img src="./assets/images/icons8-mongodb-96.png" alt="" width="30%">
+					</div>			
+					<br>								
+					<span class="mb-2">
+						<img src="./assets/images/icons8-link-90.png" alt="" width="15%">								
+						<a class="text-dark" href="https://sound-stock.herokuapp.com" rel="noopener">deployed site</a>
+					</span>
+					<br>
+					<span class="mb-2">
+						<img src="./assets/images/icons8-github-48.png" alt="" width="15%">	
+						<a class="text-dark" href="https://github.com/EwilsonS/EvanSoundstock"	target="_blank" rel="noopener">github</a>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<p>
+					This is where my coding journey began. This idea was the fuel I need to get though endless hours of learning how to code and deploy applications.
+				</p>
+				<p>					
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolorum eaque facere omnis adipisci aliquam et voluptatibus? Ratione velit debitis quis distinctio doloribus, natus, dolorum nemo voluptates totam ab tempore amet deleniti illum harum nostrum, consectetur sed laudantium dolore. Ipsum veritatis veniam similique rerum ad. Necessitatibus aliquam facilis autem sit.
+				</p>
+			</div>
+			<div class="col-sm-5">
+				<img src="./assets/images/soundstock5.JPG" alt="" width="100%">
+			</div>					
+		</div>
+
+		<!-- SharePost -->
+		<div class="row works p-4 my-5">			
+			<div class="col-sm-2">
+				<div>
+					<span class="fs-2 text-break">SharePosts</span>
+					<p class="text-dark">
+						Login and post messages for others to read
+					</p>		
+					<div class="my-2">
+						<img src="./assets/images/icons8-php-96.png" alt="" width="30%">
+						<img src="./assets/images/icons8-mysql-96.png" alt="" width="30%">
+					</div>			
+					<br>								
+					<span class="mb-2">
+						<img src="./assets/images/icons8-link-90.png" alt="" width="15%">								
+						<a class="text-dark" href="https://share-posts.herokuapp.com" target="_blank" rel="noopener">deployed site</a>
+					</span>
+					<br>
+					<span class="mb-2">
+						<img src="./assets/images/icons8-github-48.png" alt="" width="15%">	
+						<a class="text-dark" href="https://github.com/EwilsonS/Shareposts"	target="_blank" rel="noopener">github</a>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<p>
+					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum sapiente explicabo ipsa quasi quisquam qui, porro ea architecto cupiditate maiores voluptas. Omnis officia beatae facere.
+				</p>
+				<p>					
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magni mollitia cupiditate officia quo. Dolor ratione harum necessitatibus quidem odio inventore magni fugit, expedita maxime.
+				</p>
+			</div>
+			<div class="col-sm-5">
+				<img src="./assets/images/sharepost2.png" alt="" width="100%">
+			</div>					
+		</div>
+
+		<!-- Stwitter -->
+		<div class="row works p-4 my-5">			
+			<div class="col-sm-2">
+				<div>
+					<span class="fs-2 text-break">Simple Twitter</span>
+					<p class="text-dark">
+						Collection of services used for a Twitter(X)-like application
+					</p>		
+					<div class="my-2">
+						<img src="./assets/images/icons8-java-96.png" alt="" width="30%">
+						<img src="./assets/images/icons8-mysql-96.png" alt="" width="30%">
+					</div>
+					<br>
+					<span class="mb-2">
+						<img src="./assets/images/icons8-github-48.png" alt="" width="15%">	
+						<a class="text-dark" href="https://github.com/EwilsonS/Evan_Wilson_JavaS1/tree/master/EvanWilsonU2M2Summative"	target="_blank" rel="noopener">github</a>
+					</span>
+				</div>
+			</div>
+			<div class="col-sm-5">
+				<p>
+					I wanted to become familiar with ChatGPT. Since my work colleagues and I were making efforts to apply AI for the bank, It only seemed right to build a personal project that
+					demonstrates  my new found knowledge. 
+				</p>
+				<p>					
+					This custom Python application is pretty simple. It uses a FastAPI server and local storage for "persistence". I added Google analytics for fun, that was surprisingly
+					easy.
+				</p>
+			</div>
+			<div class="col-sm-5">
+				<img src="./assets/images/stwitter.png" alt="" width="100%">
+			</div>					
 		</div>
 
 		<!-- Endorsements -->
-		<div class="row works-row" id="works-section">
+		<div class="row works-row">
 			<div class="col-sm-12 text-center">
 				<h3>Endorsements</h3>
 				<br>
@@ -284,9 +314,8 @@
 		</div>
 
 		<!-- About -->
-		<h3 class="text-center mb-5">Me</h3>
-
-		<div class="row about-row mb-5" id="about-section">
+		<h3 class="text-center mb-5" id="about-section">Me</h3>
+		<div class="row about-row mb-5">
 			<div class="col-sm-4 skills">
 				<p class="text-center about-text font-weight-bold">Skills</p>
 				<p class="about-text text-center">			
@@ -380,63 +409,6 @@
 		</div>
 	</div>
 
-	<!-- Modal Content -->
-	<div class="modal fade" id="soundstock" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="mod-head rounded-0">
-				<div class="modal-header">
-					<h6 class="modal-title" id="exampleModalLongTitle">SoundStock(Mongodb, React) preview</h6>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<img class="modal-img" src="./assets/images/soundstock5.JPG" alt="">
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="shareposts" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="mod-head rounded-0">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLongTitle">SharePosts (php, mysql)</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<img class="modal-img" src="./assets/images/sharepost2.png" alt="">
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="java" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="mod-head rounded-0">
-				<div class="modal-header">
-					<h6 class="modal-title" id="exampleModalLongTitle">File structure</h6>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<img class="modal-img" src="./assets/images/java.JPG" alt="">
-			</div>
-		</div>
-	</div>
-	<div class="modal fade" id="evanAI" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-		aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="mod-head rounded-0">
-				<div class="modal-header">
-					<h6 class="modal-title" id="exampleModalLongTitle">EvanAI (python, svelte, heroku, openai)</h6>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<img class="modal-img" src="./assets/images/EvanAI.png" alt="">
-			</div>
-		</div>
-	</div>
 	<!-- mobile home buttom -->
 	<a class="scroll zz" href="#topbar">
 		<i class="fas fa-home home"></i>
@@ -548,12 +520,6 @@
   font-size: 1rem;  
 }
 
-.tech-describe {
-  font-weight: bold;
-  color: rgb(15, 136, 126);
-  font-size: 1.5rem;
-}
-
 .endorse {
   font-weight: bold;
   color: rgb(15, 136, 126);
@@ -565,28 +531,6 @@
   line-height: 0.5;
   font-size: 5em;
   color: rgba(15, 136, 126, 0.267);
-}
-
-.show-me {
-  color: red;
-  border-radius: 1.5rem;
-  background-color: white;
-  border: 1px rgba(15, 136, 126, 0.356) solid;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  margin-top: 1rem;
-  transition: 0.25s;
-}
-
-.show-me:hover {
-  cursor: pointer;
-  background-color: rgba(15, 136, 126, 0.274);
-}
-
-.show-me:focus {
-  outline: none;
 }
 
 /* ============================ Blog Posts =============================== */
@@ -628,17 +572,6 @@
   color: white;
 }
 
-/* ============================== Modal ====================================== */
-.mod-head {
-  background-color: rgb(137, 179, 175);
-  color: white;
-  border: none;
-}
-
-.modal-img {
-  width: 30rem;
-}
-
 /* ============================================================================================================================================= */
 /* ===================================================== Media Queries ========================================================================= */
 /* ============================================================================================================================================= */
@@ -647,12 +580,6 @@
     border: none;
     background-color: rgba(15, 136, 126, 0.068);
     font-size: 0.75rem;
-  }
-
-  .tech-describe {
-    font-weight: bold;
-    color: rgb(15, 136, 126);
-    font-size: 1rem;
   }
 }
 
@@ -688,10 +615,6 @@
 
   .navigate-text {
     font-size: 1rem;
-  }
-
-  .modal-img {
-    width: 19rem;
   }
 
   .home {
