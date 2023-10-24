@@ -66,7 +66,7 @@
 				<p>
 					<a class="navigate-button scroll" href="#works-section"><i
 							class="fas fa-angle-double-down navigate-icon text-secondary"><br><span
-								class="navigate-text">Work</span></i>
+								class="navigate-text">Projects</span></i>
 					</a>
 					<a class="navigate-button scroll" href="#about-section"><i
 							class="fas fa-user-circle navigate-icon text-secondary"><br><span class="navigate-text">About</span></i>
@@ -82,7 +82,7 @@
 		</div>
 
 		<!-- Work -->
-		<h3 class="text-center" id="works-section">Samples</h3>
+		<h3 class="text-center" id="works-section">Projects</h3>
 
 		<!-- EvanAI -->
 		<div class="row works p-4 my-5">			
@@ -245,7 +245,7 @@
 				<h3>Endorsements</h3>
 				<br>
 				<div class="card-group">
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<div class="card endorsement mx-3 p-2 text-center rounded-0">
 						<br>
 						<div>
 							<span class="big-quote float-left">&#8220; </span><small>Bank Of The West</small>
@@ -255,7 +255,7 @@
 								</p>
 						</div>
 					</div>
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<div class="card endorsement mx-3 p-2 text-center rounded-0">
 						<br>
 						<div>
 							<span class="big-quote float-left">&#8220;</span><small>Bank Of The West</small>
@@ -265,7 +265,7 @@
 								</p>
 						</div>
 					</div>					
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<div class="card endorsement mx-3 p-2 text-center rounded-0">
 						<br>
 						<div>
 							<span class="big-quote float-left">&#8220;</span><small>Bank Of The West</small>
@@ -278,7 +278,7 @@
 				</div>
 				<br>		
 				<div class="card-group">
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<div class="card endorsement mx-3 p-2 text-center rounded-0">
 						<br>
 						<div>
 							<span class="big-quote float-left">&#8220;</span> <small>Allstate</small>
@@ -288,7 +288,7 @@
 								</p>
 						</div>
 					</div>
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<div class="card endorsement mx-3 p-2 text-center rounded-0">
 						<br>
 						<div>
 							<span class="big-quote float-left">&#8220;</span> <small>Allstate</small>
@@ -298,7 +298,7 @@
 								</p>
 						</div>
 					</div>					
-					<div class="card works mx-3 p-2 text-center rounded-0">
+					<div class="card endorsement mx-3 p-2 text-center rounded-0">
 						<br>
 						<div>
 							<span class="big-quote float-left">&#8220;</span> <small>Allstate</small>
@@ -417,7 +417,7 @@
 </div>
 
 <style>
-  #portfolio {
+#portfolio {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -515,15 +515,34 @@
 }
 
 .works {
-  outline:  rgba(15, 136, 126, 0.641) solid 2px;
+  outline:  rgba(15, 136, 126, 0.354) solid 0px;
   background-color: rgba(15, 136, 126, 0.068);
   font-size: 1rem;  
+	transition: .3s;
+  z-index: 10;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
 }
 
+.works:hover {
+	background-color: rgba(15, 136, 126, 0.068);
+  transition: .3s;
+  z-index: 10;
+  -webkit-transform: scale(1.025);
+  -ms-transform: scale(1.025);
+  transform: scale(1.025);
+  box-shadow: 1px 0px 26px 0px rgba(50, 50, 50, 0.5);
+}
 .endorse {
   font-weight: bold;
   color: rgb(15, 136, 126);
   font-size: 1rem;
+}
+
+.endorsement {
+	outline:  rgba(15, 136, 126, 0.354) solid 2px;
+  background-color: rgba(15, 136, 126, 0.068);
 }
 
 .big-quote {
@@ -584,11 +603,6 @@
 }
 
 @media (max-width: 770px) {
-  .card-group > .works {
-    flex: 1 35%;
-    margin-bottom: 2rem;
-  }
-
   .navigate-button {
     margin-left: 1rem;
     margin-right: 1rem;
