@@ -157,10 +157,12 @@
 			</div>
 			<div class="col-sm-5">
 				<p>
-					This is where my coding journey began. This idea was the fuel I need to get though endless hours of learning how to code and deploy applications.
+					This is where my coding journey began. This idea was the fuel I needed to get through endless hours of learning how to code and deploy applications.
+					I figured that if I wanted to be able to communicate grand tech ideas, I should be able to prototype them as well.
 				</p>
 				<p>					
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolorum eaque facere omnis adipisci aliquam et voluptatibus? Ratione velit debitis quis distinctio doloribus, natus, dolorum nemo voluptates totam ab tempore amet deleniti illum harum nostrum, consectetur sed laudantium dolore. Ipsum veritatis veniam similique rerum ad. Necessitatibus aliquam facilis autem sit.
+					For this project (built in 2018 and only remains as an artifact of that time), I chose the MERN stack. Good ol' mongo, express, react and node.
+					Standard full stack crud app here. This project tells the story of a relentless newbie dev and his thirst for innovation.
 				</p>
 			</div>
 			<div class="col-sm-5">
@@ -194,10 +196,12 @@
 			</div>
 			<div class="col-sm-5">
 				<p>
-					Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum sapiente explicabo ipsa quasi quisquam qui, porro ea architecto cupiditate maiores voluptas. Omnis officia beatae facere.
+					Why not build a PHP app? I don't see PHP very often in a modern professional setting, but when I do, 
+					I'm glad I have some muscle memory building out those templates. 
 				</p>
 				<p>					
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum magni mollitia cupiditate officia quo. Dolor ratione harum necessitatibus quidem odio inventore magni fugit, expedita maxime.
+					This is one of my more stable applications. This thing is a tank. Go ahead, try to break it. Complete with custom sanitization 
+					and simple views, this app makes a great starting point for anything.
 				</p>
 			</div>
 			<div class="col-sm-5">
@@ -226,12 +230,13 @@
 			</div>
 			<div class="col-sm-5">
 				<p>
-					I wanted to become familiar with ChatGPT. Since my work colleagues and I were making efforts to apply AI for the bank, It only seemed right to build a personal project that
-					demonstrates  my new found knowledge. 
+					Java has been my bread and butter. There is such a strong community of Java developers out there. You can always find the 
+					right sdk, library or framework. I learned frameworks and architectures in my 2019 Java coding bootcamp that are considered 
+					cutting edge today in 2023. 
 				</p>
 				<p>					
-					This custom Python application is pretty simple. It uses a FastAPI server and local storage for "persistence". I added Google analytics for fun, that was surprisingly
-					easy.
+					Here, I'm taking advantage of Netflix's Eureka, openfeign and much more. Check out these annotations @EnableEurekaServer, 
+					@EnableFeignClients, @EnableDiscoveryClient, @EnableCaching. Cool huh?
 				</p>
 			</div>
 			<div class="col-sm-5">
