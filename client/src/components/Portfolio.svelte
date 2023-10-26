@@ -231,8 +231,8 @@
 			<div class="col-sm-5">
 				<p>
 					Java has been my bread and butter. There is such a strong community of Java developers out there. You can always find the 
-					right sdk, library or framework. I learned frameworks and architectures in my 2019 Java coding bootcamp that are considered 
-					cutting edge today in 2023. 
+					right sdk, library or framework. I learned frameworks and architectures in my 2019 Java coding bootcamp that might be considered 
+					by some to be cutting edge today in 2023. 
 				</p>
 				<p>					
 					Here, I'm taking advantage of Netflix's Eureka, openfeign and much more. Check out these annotations @EnableEurekaServer, 
