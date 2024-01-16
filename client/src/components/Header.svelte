@@ -8,7 +8,7 @@
 
 <div id="header-container">
   <p id="header-title">{title}</p>
-  <SelectAgent selection={title.toLowerCase()}/>
+  <!-- <SelectAgent selection={title.toLowerCase()}/> -->
   <div style="margin-left:45vw">
     {#if showLanguage}
       <SelectLanguage />
@@ -19,5 +19,7 @@
 <style>
   #header-title {
     margin: 0;
+    position: relative;
+    right: 7%;
   }
 </style>
