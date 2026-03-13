@@ -13,6 +13,10 @@ let welcomeMessage = ''
 let agent = ''
 const lang = localStorage.getItem('display_language') || 'en'
 
+const MAX_HISTORY_MESSAGES = 200
+const MAX_RENDERED_MESSAGES = 50
+const MAX_STORED_CHARS = 200000
+
 function setAgentAndWelcomeMsg () {
   agent = new URLSearchParams(window.location.search).get('agent')
   welcomeMessage = langOpts.welcome[lang]
@@ -38,10 +42,25 @@ const messageClassIndex = 1
 export function loadConversationHistory () {
   const storedHistory = localStorage.getItem('conversationHistory') // eslint-disable-line no-undef
   if (storedHistory) {
-    conversationHistory = JSON.parse(storedHistory)
-    conversationHistory.forEach(message => {
-      addMessage(message.content, message.role === 'user' ? 'user' : 'bot')
-    })
+    try {
+      const parsedHistory = JSON.parse(storedHistory)
+      conversationHistory = pruneHistory(parsedHistory)
+      if (conversationHistory.length === 0) {
+        localStorage.removeItem('conversationHistory') // eslint-disable-line no-undef
+        setAgentAndWelcomeMsg()
+        displayWelcomeMessage()
+        return
+      }
+      const historyToRender = conversationHistory.slice(-MAX_RENDERED_MESSAGES)
+      historyToRender.forEach(message => {
+        addMessage(message.content, message.role === 'user' ? 'user' : 'bot')
+      })
+    } catch (error) {
+      console.warn('Failed to load stored history:', error)
+      localStorage.removeItem('conversationHistory') // eslint-disable-line no-undef
+      setAgentAndWelcomeMsg()
+      displayWelcomeMessage()
+    }
   } else {
     // Display the welcome message if there's no stored history
     setAgentAndWelcomeMsg()
@@ -70,11 +89,43 @@ export function clearHistory () {
 
 // Function to save the conversation history to localStorage
 export function saveConversationHistory () {
+  conversationHistory = pruneHistory(conversationHistory)
   localStorage.setItem('conversationHistory', JSON.stringify(conversationHistory)) // eslint-disable-line no-undef
   const profiles = document.querySelectorAll('.profile')
   profiles.forEach(function (el) {
     if (el.classList.contains('clicked')) localStorage.setItem('user', el.id) // eslint-disable-line no-undef
   })
+}
+function pruneHistory (history) {
+  if (!Array.isArray(history)) return []
+  let pruned = history.filter(message => {
+    return message && typeof message.content === 'string' && typeof message.role === 'string'
+  })
+
+  if (pruned.length > MAX_HISTORY_MESSAGES) {
+    pruned = pruned.slice(-MAX_HISTORY_MESSAGES)
+  }
+
+  let totalChars = 0
+  pruned.forEach(message => {
+    totalChars += message.content.length
+  })
+
+  if (totalChars > MAX_STORED_CHARS) {
+    const trimmed = []
+    let runningChars = 0
+    for (let i = pruned.length - 1; i >= 0; i -= 1) {
+      const messageLength = pruned[i].content.length
+      if (runningChars + messageLength > MAX_STORED_CHARS) {
+        break
+      }
+      trimmed.push(pruned[i])
+      runningChars += messageLength
+    }
+    pruned = trimmed.reverse()
+  }
+
+  return pruned
 }
 
 export function handleEnter (event) {
